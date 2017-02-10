@@ -19,9 +19,26 @@
                     <div class="col-md-10">
                         <h4>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }} <small>{{ solicitud.mail }}</small></h4>
                     </div>
-                    <a href="{{ path('solicitud_edit', { 'slug': solicitud.slug }) }}" class="btn btn-warning">
-                        Evaluar
-                    </a>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#evalModal">
+                        <i class="fa fa-pencil"></i> Evaluar </button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="evalModal" tabindex="-1" role="dialog" aria-labelledby="evalModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="evalModalLabel">Evaluar solicitud</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {% render(controller('SimBundle:Solicitud:edit', {'slug' : solicitud.slug })) %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-body">

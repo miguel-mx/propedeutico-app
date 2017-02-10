@@ -81,7 +81,7 @@ class SolicitudController extends Controller
      * Finds and displays a solicitud entity.
      *
      * @Route("/{slug}", name="solicitud_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function showAction(Solicitud $solicitud)
     {
@@ -108,6 +108,33 @@ class SolicitudController extends Controller
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
 
         $deleteForm = $this->createDeleteForm($solicitud);
+        $editForm = $this->createForm('SimBundle\Form\EvalType', $solicitud);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('solicitud_show', array('slug' => $solicitud->getSlug()));
+        }
+
+        return $this->render('solicitud/edit.html.twig', array(
+            'solicitud' => $solicitud,
+            'edit_form' => $editForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to eval an existing solicitud entity.
+     *
+     * @Route("/{slug}/eval", name="solicitud_eval")
+     * @Method({"GET", "POST"})
+     */
+    public function evalAction(Request $request, Solicitud $solicitud)
+    {
+        // Access control
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
+
+        $deleteForm = $this->createDeleteForm($solicitud);
         $editForm = $this->createForm('SimBundle\Form\SolicitudType', $solicitud);
         $editForm->handleRequest($request);
 
@@ -123,6 +150,7 @@ class SolicitudController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Deletes a solicitud entity.

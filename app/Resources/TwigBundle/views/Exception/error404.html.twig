@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+    <div class="page-header">
+        <h3>{{ status_code }} Página no encontrada</h3>
+    </div>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+    {% endif %}
+
+    <p>
+        <a class="btn btn-default btn-lg" role="button" href="{{ path('login') }}">Página principal</a>
+    </p>
+    </div>
+{% endblock %}

@@ -28,7 +28,6 @@
                 <th>Recomendaciones</th>
                 <th>Aceptado</th>
                 <th>Confirmado</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -41,9 +40,6 @@
                 <td class="text-center">{{ solicitud.recomendaciones | length }}</td>
                 <td class="text-center">{{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
                 <td class="text-center">{{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
-                <td>
-                    <a href="{{ path('solicitud_edit', { 'slug': solicitud.slug }) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                </td>
             </tr>
         {% endfor %}
         </tbody>

@@ -1,21 +1,38 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Solicitud edit</h1>
+    {{ form_start(edit_form, {'action': path('solicitud_edit', { 'slug': solicitud.slug})}) }}
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>{{ solicitud.paterno|title }} {{ solicitud.materno|title }} {{ solicitud.nombre|title }}</strong></div>
+            <div class="panel-body">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+                <div class="alert-danger">{{ form_errors(edit_form) }}</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="checkbox">
+                              <label>
+                                {{ form_widget(edit_form.aceptado) }}
+                                <strong>Aceptado</strong>
+                              </label>
+                            </div>
+                            <span class="text-danger">{{ form_errors(edit_form.aceptado) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><strong>Comentarios sobre la solicitud</strong></label>
+                            {{ form_widget(edit_form.comentarios, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
+                            <span class="text-danger">{{ form_errors(edit_form.comentarios) }}</span>
+                        </div>
+                    </div>
+                </div>
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-success" type="submit" value="Guardar" />
+
+            </div>
+        </div>
+    </div>
+
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('solicitud_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
