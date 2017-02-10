@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="page-header">
+            <h2>Simetrías 2017 <small>Solicitud beca</small></h2>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="alert-danger">{{ form_errors(form) }}</div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading"><strong>Datos personales</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            {{ form_widget(form.nombre, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.nombre) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Apellido paterno</label>
+                            {{ form_widget(form.paterno, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.paterno) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Apellido materno</label>
+                            {{ form_widget(form.materno, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.materno) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Correo electrónico</label>
+                            {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.mail) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Sexo</label>
+                            {{ form_widget(form.sexo, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.sexo) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Estado de procedencia</label>
+                            {{ form_widget(form.procedencia, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.procedencia) }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><strong>Datos académicos</strong></div>
+            <div class="panel-body">
+                {# <div class="alert alert-warning">
+                    <strong>Todos los campos son obligatorios para los estudiantes.</strong>
+                </div> #}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Carrera de licenciatura:</label>
+                            {{ form_widget(form.carrera, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.carrera) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Universidad</label>
+                            {{ form_widget(form.universidad, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.universidad) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Programa actual</label>
+                            {{ form_widget(form.programa, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.programa) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Porcentaje de avance %</label>
+                            {{ form_widget(form.avance, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.avance) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Promedio general</label>
+                            {{ form_widget(form.promedio, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.promedio) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Razones por las que quiere asistir</label>
+                            {{ form_widget(form.razones, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
+                            <span class="text-danger">{{ form_errors(form.razones) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-warning">
+                    <p>Es necesario proporcionar dos referencias de profesores. Se les enviará un correo electrónico para solicitar una recomendación.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Nombre profesor (1):</label>
+                            {{ form_widget(form.profesor1, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.profesor1) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Universidad</label>
+                            {{ form_widget(form.univprofesor1, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.univprofesor1) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Correo</label>
+                            {{ form_widget(form.mailprofesor1, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.mailprofesor1) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Nombre profesor (2):</label>
+                            {{ form_widget(form.profesor2, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.profesor2) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Universidad</label>
+                            {{ form_widget(form.univprofesor2, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.univprofesor2) }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Correo</label>
+                            {{ form_widget(form.mailprofesor2, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.mailprofesor2) }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {{ form_widget(form) }}
+        <h1></h1>
+        <input class="btn btn-primary" type="submit" value="Enviar solicitud" />
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

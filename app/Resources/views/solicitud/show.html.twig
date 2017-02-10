@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1></h1>
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header text-muted"><h3><i class="fa fa-user"></i> Datos personales y académicos</h3></div>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }} <small>{{ solicitud.mail }}</small></h4>
+                    </div>
+                    <a href="{{ path('solicitud_edit', { 'slug': solicitud.slug }) }}" class="btn btn-warning">
+                        Evaluar
+                    </a>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr>
+                                        <td><strong>Licenciatura:</strong></td><td>{{ solicitud.carrera }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Universidad:</strong></td><td>{{ solicitud.universidad}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Programa:</strong></td><td>{{ solicitud.programa }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Porcentaje de avance:</strong></td><td>{{ solicitud.avance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Promedio:</strong></td><td>{{ solicitud.promedio }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr>
+                                        <td><strong>Sexo:</strong></td><td>{{ solicitud.sexo | upper }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Estado </strong></td><td>{{ solicitud.procedencia }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Aceptado:</strong></td><td> {{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Confirmado:</strong></td><td> {{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if solicitud.comentarios %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="well">
+                                <p class="text-muted">{{ solicitud.comentarios }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-header text-muted"><h3><i class="fa fa-graduation-cap"></i> Beca</h3></div>
+                    </div>
+                    <div class="col-md-10">
+                        <h4>Razones para asistir:</h4>
+                        <div class="well">
+                            {{ solicitud.razones }}
+                        </div>
+                    </div>
+                </div>
+                <div class="page-header text-muted">
+                    <h3><i class="fa fa-graduation-cap"></i> Recomendaciones
+                        {%  if solicitud.recomendaciones|length == 1 %}
+                            <i class="fa fa-exclamation-triangle icon-warning"></i>
+                        {% elseif solicitud.recomendaciones|length == 1 %}
+                            <i class="fa fa-check-square-o icon-success"></i>
+                        {% elseif solicitud.recomendaciones|length == 0 %}
+                            <i class="fa fa-times-circle icon-danger"></i>
+                        {% endif %}
+                        </h3>
+                </div>
+                <div class="row">
+                    {% for recomendacion in solicitud.recomendaciones %}
+                        {% if recomendacion.mail == solicitud.mailprofesor1 %}
+                            <div class="col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tr>
+                                                <td><strong>Profesor:</strong></td><td>{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em><br>{{ solicitud.univprofesor1 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Comparacion:</strong></td><td>{{ recomendacion.comparacion }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Materias:</strong></td><td>{{ recomendacion.materias }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Participacion:</strong></td><td>{{ recomendacion.participacion }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif recomendacion.mail == solicitud.mailprofesor2 %}
+                            <div class="col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <table class="table">
+                                            <tr>
+                                                <td><strong>Profesor:</strong></td><td>{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em><br>{{ solicitud.univprofesor2 }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Comparacion:</strong></td><td>{{ recomendacion.comparacion }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Materias:</strong></td><td>{{ recomendacion.materias }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Participacion:</strong></td><td>{{ recomendacion.participacion }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <p class="text-muted text-right"><small>Última actualización: {{ solicitud.updatedAt|localizeddate('medium', 'none', null, null, "cccc, d MMMM Y 'a las' hh:mm aaa") }}</small></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-4">
+                <a href="{{ path('solicitud_index') }}" class="btn btn-primary">
+                    Solicitudes
+                </a>
+            </div>
+        </div>
+        <div class="page-header"><h1>&nbsp;</h1></div>
+    </div>
+
+{% endblock %}

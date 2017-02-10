@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recomendacions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Comparacion</th>
+                <th>Materias</th>
+                <th>Participacion</th>
+                <th>Utilidad</th>
+                <th>Motivacion</th>
+                <th>Updatedat</th>
+                <th>Createdat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recomendacion in recomendacions %}
+            <tr>
+                <td><a href="{{ path('recomendacion_show', { 'id': recomendacion.id }) }}">{{ recomendacion.id }}</a></td>
+                <td>{{ recomendacion.comparacion }}</td>
+                <td>{{ recomendacion.materias }}</td>
+                <td>{{ recomendacion.participacion }}</td>
+                <td>{{ recomendacion.utilidad }}</td>
+                <td>{{ recomendacion.motivacion }}</td>
+                <td>{% if recomendacion.updatedAt %}{{ recomendacion.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if recomendacion.createdAt %}{{ recomendacion.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('recomendacion_show', { 'id': recomendacion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('recomendacion_edit', { 'id': recomendacion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recomendacion_new') }}">Create a new recomendacion</a>
+        </li>
+    </ul>
+{% endblock %}

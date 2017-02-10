@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h2>Lista de solicitudes</h2>
+
+
+    <div class="row">
+        <div class="col col-md-2">
+            <div class="metric-container">
+                <h3 class="metric-header">{{ solicituds|length }}</h3>
+                <span class="metric-label">Solicitudes</span>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered" id="solicitud_table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Universidad</th>
+                <th>Programa</th>
+                <th>Recomendaciones</th>
+                <th>Aceptado</th>
+                <th>Confirmado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solicitud in solicituds %}
+            <tr>
+                {#<td><a href="{{ path('solicitud_show', { 'slug': solicitud.slug }) }}">{{ solicitud.id }}</a></td>#}
+                <td><a href="{{ path('solicitud_show', { 'slug': solicitud.slug }) }}">{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</a></td>
+                <td>{{ solicitud.universidad }}</td>
+                <td>{{ solicitud.programa }}</td>
+                <td class="text-center">{{ solicitud.recomendaciones | length }}</td>
+                <td class="text-center">{{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
+                <td class="text-center">{{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
+                <td>
+                    <a href="{{ path('solicitud_edit', { 'slug': solicitud.slug }) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('solicitud_new') }}">Create a new solicitud</a>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#solicitud_table').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ]
+            } );
+        } );
+    </script>
+{% endblock %}

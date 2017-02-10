@@ -1,0 +1,7 @@
+sim:
+    resource: "@SimBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+logout:
+    path: /logout

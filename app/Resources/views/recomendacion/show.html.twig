@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recomendacion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recomendacion.id }}</td>
+            </tr>
+            <tr>
+                <th>Comparacion</th>
+                <td>{{ recomendacion.comparacion }}</td>
+            </tr>
+            <tr>
+                <th>Materias</th>
+                <td>{{ recomendacion.materias }}</td>
+            </tr>
+            <tr>
+                <th>Participacion</th>
+                <td>{{ recomendacion.participacion }}</td>
+            </tr>
+            <tr>
+                <th>Utilidad</th>
+                <td>{{ recomendacion.utilidad }}</td>
+            </tr>
+            <tr>
+                <th>Motivacion</th>
+                <td>{{ recomendacion.motivacion }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if recomendacion.updatedAt %}{{ recomendacion.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if recomendacion.createdAt %}{{ recomendacion.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recomendacion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('recomendacion_edit', { 'id': recomendacion.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
