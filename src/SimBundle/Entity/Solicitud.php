@@ -868,19 +868,4 @@ class Solicitud
 
         return NULL;
     }
-
-    /**
-     * isValid
-     *
-     * @return Recomendacion
-     */
-    public function isValid($email)
-    {
-        foreach($this->recomendaciones as $recomendacion ) {
-            if($recomendacion->getMail() == $email)
-                return TRUE;
-        }
-
-        return NULL;
-    }
 }
