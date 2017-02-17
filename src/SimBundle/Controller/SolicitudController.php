@@ -73,8 +73,29 @@ class SolicitudController extends Controller
 
             $mailer->send($message);
 
+            // Envía correo de solicitud de recomendación 1
+            $message = \Swift_Message::newInstance()
+                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
+                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setTo(array($solicitud->getMailprofesor1()))
+//                ->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor1())))
+            ;
+
+            $mailer->send($message);
+
+            // Envía correo de solicitud de recomendación 2
+            $message = \Swift_Message::newInstance()
+                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
+                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setTo(array($solicitud->getMailprofesor2()))
+//                ->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor2())))
+            ;
+
+            $mailer->send($message);
+
             return $this->render(':solicitud:confirmacion-registro.html.twig', array('entity'=>$solicitud));
-            return $this->redirectToRoute('solicitud_show', array('id' => $solicitud->getId()));
         }
 
         return $this->render('solicitud/new.html.twig', array(

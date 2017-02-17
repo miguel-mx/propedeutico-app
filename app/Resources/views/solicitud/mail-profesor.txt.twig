@@ -1,13 +1,11 @@
 2da Escuela de Verano en Simetrías de Estructuras Combinatorias
 
-2da Escuela de Verano en Simetrías de Estructuras Combinatorias
-
-
-El(la) estudiante {{ entity.nombre|title }} {{ entity.paterno|title }} {{ entity.materno|title }} solicitó su participación en la 2a Escuela de Verano en Simetrías de Estructuras Combinatorias y lo(la) mencionó a usted como una posible referencia.
+El(la) estudiante {{ entity.nombre|title }} {{ entity.paterno|title }} {{ entity.materno|title }} solicitó{% if entity.beca == 'NO' %} su participación en{% else %} {{ entity.beca }} para{% endif %} la 2a Escuela de Verano en Simetrías de Estructuras Combinatorias y lo(la) mencionó a usted como una posible referencia.
 
 Agradeceremos que nos conceda un poco de su tiempo para responder las preguntas del siguiente formulario:
 
-// TODO: Corregir dirección en producción
+{#$TODO: Corregir dirección en producción#}
+
 http://.../recomendacion/{{ entity.slug }}/{{ email }}/new
 
 Saludos cordiales.
@@ -15,3 +13,4 @@ Saludos cordiales.
 Isabel Hubard
 Daniel Pellicer
 (Comité organizador)
+

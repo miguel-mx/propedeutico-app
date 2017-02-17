@@ -7,7 +7,27 @@
     <div class="container">
 
         <div class="page-header">
-            <h2>2da Escuela de Verano en Simetrías de Estructuras Combinatorias <small>Solicitud beca</small></h2>
+            <h2>2da Escuela de Verano en Simetrías de Estructuras Combinatorias<br> <small>Solicitud beca</small></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead">El proceso de registro consta de tres partes:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-muted"><strong>1) Información personal:</strong> Llena los campos del siguiente formulario:</p>
+                <p class="text-muted"><strong>2) Recomendaciones:</strong> Proporciona dirección de correo de dos profesores. Se les enviará un correo electrónico para solicitar una recomendación.</p>
+            </div>
+            <div class="col-md-6">
+                <p class="text-muted"><strong>3) Ejercicios:</strong> en la primera mitad de mayo le haremos llegar a todos los solicitantes un texto breve relacionado con los temas de la escuela. En el texto habrá algunos ejercicios que se deberán entregar en un lapso de dos semanas para completar la solicitud.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="alert alert-success">Es importante completar los pasos (1) y (2) a más tardar el <strong>5 de mayo de 2017</strong>. Si falta alguno de los pasos la solicitud no será tomada en cuenta.</p>
+                <p class="alert alert-success">Los resultados se darán a conocer a principios de junio de 2017.</p>
+            </div>
         </div>
 
         {{ form_start(form) }}
@@ -65,7 +85,7 @@
             </div>
         </div>
         <div class="panel panel-info">
-            <div class="panel-heading"><strong>Datos académicos</strong></div>
+            <div class="panel-heading"><strong>Datos académicos y beca</strong></div>
             <div class="panel-body">
                 {# <div class="alert alert-warning">
                     <strong>Todos los campos son obligatorios para los estudiantes.</strong>
@@ -115,6 +135,15 @@
                             <label>Razones por las que quiere asistir</label>
                             {{ form_widget(form.razones, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
                             <span class="text-danger">{{ form_errors(form.razones) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Tipo de beca</label>
+                            {{ form_widget(form.beca, {'attr': {'class': 'form-control'}}) }}
+                            <span class="text-danger">{{ form_errors(form.beca) }}</span>
                         </div>
                     </div>
                 </div>

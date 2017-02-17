@@ -42,6 +42,8 @@ class RecomendacionController extends Controller
      */
     public function newAction(Request $request, Solicitud $solicitud, $correo)
     {
+        //TODO: Especificar fecha límite
+
         if($solicitud->getMailprofesor1() != $correo && $solicitud->getMailprofesor2() != $correo)
             throw $this->createNotFoundException('La recomendación no existe');
 
@@ -61,6 +63,28 @@ class RecomendacionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($recomendacion);
             $em->flush($recomendacion);
+
+            $mailer = $this->get('mailer');
+
+            $transport = $this->get("swiftmailer.mailer.default.transport");
+            // disable SSL certificate validation
+            $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
+                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setTo($correo)
+                ->setCc($solicitud->getMail())
+//              ->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBody($this->renderView('recomendacion/mail-profesor.txt.twig', array('entity' => $recomendacion)))
+            ;
+
+            $mailer->send($message);
+
+            $this->addFlash(
+              'notice',
+                'Recibimos la recomendación!'
+            );
 
             return $this->redirectToRoute('recomendacion_show', array('id' => $recomendacion->getId()));
         }

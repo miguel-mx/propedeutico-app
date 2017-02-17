@@ -39,6 +39,14 @@ class SolicitudType extends AbstractType
             ->add('avance')
             ->add('promedio')
             ->add('razones', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array('required' => false))
+            ->add('beca', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
+                'choices'  => array(
+                    'Beca de alimentos y hospedaje' => 'Beca de alimentos y hospedaje',
+                    'Beca de alimentos' => 'Beca de alimentos',
+                    'NO' => 'NO',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('profesor1')
             ->add('univprofesor1')
             ->add('mailprofesor1')

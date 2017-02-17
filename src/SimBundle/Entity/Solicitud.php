@@ -174,6 +174,14 @@ class Solicitud
      */
     private $razones;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beca", type="string", length=40)
+     */
+    private $beca;
+
     /**
      * @var bool
      *
@@ -769,6 +777,29 @@ class Solicitud
     public function getRazones()
     {
         return $this->razones;
+    }
+
+    /**
+     * Set beca
+     *
+     * @param string $beca
+     * @return Form
+     */
+    public function setBeca($beca)
+    {
+        $this->beca = $beca;
+
+        return $this;
+    }
+
+    /**
+     * Get beca
+     *
+     * @return string
+     */
+    public function getBeca()
+    {
+        return $this->beca;
     }
 
     /**

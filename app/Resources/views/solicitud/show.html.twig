@@ -38,49 +38,42 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <table class="table">
-                                    <tr>
-                                        <td><strong>Licenciatura:</strong></td><td>{{ solicitud.carrera }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Universidad:</strong></td><td>{{ solicitud.universidad}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Programa:</strong></td><td>{{ solicitud.programa }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Porcentaje de avance:</strong></td><td>{{ solicitud.avance }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Promedio:</strong></td><td>{{ solicitud.promedio }}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table table-stripped">
+                            <tr>
+                                <td><strong>Licenciatura:</strong></td><td>{{ solicitud.carrera }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Universidad:</strong></td><td>{{ solicitud.universidad}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Programa:</strong></td><td>{{ solicitud.programa }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Porcentaje de avance:</strong></td><td>{{ solicitud.avance }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Promedio:</strong></td><td>{{ solicitud.promedio }}</td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <table class="table">
-                                    <tr>
-                                        <td><strong>Sexo:</strong></td><td>{{ solicitud.sexo | upper }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Estado </strong></td><td>{{ solicitud.procedencia }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Aceptado:</strong></td><td> {{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Confirmado:</strong></td><td> {{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table table-striped">
+                            <tr>
+                                <td><strong>Sexo:</strong></td><td>{{ solicitud.sexo | upper }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estado </strong></td><td>{{ solicitud.procedencia }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aceptado:</strong></td><td> {{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Confirmado:</strong></td><td> {{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i>' : '<i class="fa fa-times-circle icon-danger"></i>' }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 {% if solicitud.comentarios %}
@@ -105,6 +98,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><h4>Solicita beca: <strong>{{ solicitud.beca }}</strong></h4></p>
+                    </div>
+                </div>
+
                 <div class="page-header text-muted">
                     <h3><i class="fa fa-graduation-cap"></i> Recomendaciones
                         {%  if solicitud.recomendaciones|length == 1 %}
