@@ -1,56 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Recomendacion</h1>
+    <div class="container">
+        <h1></h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ recomendacion.id }}</td>
-            </tr>
-            <tr>
-                <th>Comparacion</th>
-                <td>{{ recomendacion.comparacion }}</td>
-            </tr>
-            <tr>
-                <th>Materias</th>
-                <td>{{ recomendacion.materias }}</td>
-            </tr>
-            <tr>
-                <th>Participacion</th>
-                <td>{{ recomendacion.participacion }}</td>
-            </tr>
-            <tr>
-                <th>Utilidad</th>
-                <td>{{ recomendacion.utilidad }}</td>
-            </tr>
-            <tr>
-                <th>Motivacion</th>
-                <td>{{ recomendacion.motivacion }}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if recomendacion.updatedAt %}{{ recomendacion.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if recomendacion.createdAt %}{{ recomendacion.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('recomendacion_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('recomendacion_edit', { 'id': recomendacion.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header text-muted"><h3><i class="fa fa-user"></i> {{ recomendacion.solicitud.paterno }} {{ recomendacion.solicitud.materno }} {{ recomendacion.solicitud.nombre }} -
+                            <small><strong>Recomendación</strong></small></h3></div>
+                </div>
+            </div>
+            <p class="text-muted">Comparación con otros estudiantes: <strong>{{ recomendacion.comparacion }}</strong></p>
+            <p class="text-muted">Materias cursadas:</p>
+            <div class="text-muted well">{{ recomendacion.materias }}</div>
+            <p class="text-muted">Participación en clase</p>
+            <div class="text-muted well">{{ recomendacion.participacion }}</div>
+            <p class="text-muted">Utilidad para el estudiante:</p>
+            <div class="text-muted well">{{ recomendacion.utilidad }}</div>
+            <p class="text-muted text-right"><small>Última actualización: {{ recomendacion.updatedAt|localizeddate('medium', 'none', null, null, "cccc, d MMMM Y 'a las' hh:mm aaa") }}</small></p>
+        </div>
+    </div>
+    </div>
 {% endblock %}

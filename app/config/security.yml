@@ -8,7 +8,7 @@ security:
             memory:
                 users:
                     admin:
-                        password: $2a$04$8v79YwLV8N89fdQZAR9sOOQ3QbRW2EymRS1hAv9lOYAoyJwPB5WcW
+                        password: $2a$06$ziDDBIPVuBoWgXznT3HSZeLAJCfiwt6BKPHsn.VyvzcaWEsHGmUYm
                         roles: 'ROLE_ADMIN'
 
     encoders:

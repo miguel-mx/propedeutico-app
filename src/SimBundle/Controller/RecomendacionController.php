@@ -23,7 +23,6 @@ class RecomendacionController extends Controller
      */
     public function indexAction()
     {
-        // Access control
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
 
         $em = $this->getDoctrine()->getManager();
@@ -43,7 +42,6 @@ class RecomendacionController extends Controller
      */
     public function newAction(Request $request, Solicitud $solicitud, $correo)
     {
-        // Valida que sea un correo válido
         if($solicitud->getMailprofesor1() != $correo && $solicitud->getMailprofesor2() != $correo)
             throw $this->createNotFoundException('La recomendación no existe');
 
@@ -98,8 +96,6 @@ class RecomendacionController extends Controller
      */
     public function editAction(Request $request, Recomendacion $recomendacion)
     {
-
-        // Access control
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
 
         $deleteForm = $this->createDeleteForm($recomendacion);
