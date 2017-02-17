@@ -55,8 +55,13 @@ class SolicitudController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($solicitud);
             $em->flush($solicitud);
+            $https['ssl']['verify_peer'] = FALSE;
 
             $mailer = $this->get('mailer');
+
+            $transport = $this->get("swiftmailer.mailer.default.transport");
+            // disable SSL certificate validation
+            $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
@@ -65,6 +70,7 @@ class SolicitudController extends Controller
 //                ->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail.txt.twig', array('entity' => $solicitud)))
             ;
+
             $mailer->send($message);
 
             return $this->render(':solicitud:confirmacion-registro.html.twig', array('entity'=>$solicitud));
