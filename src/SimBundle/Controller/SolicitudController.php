@@ -43,7 +43,7 @@ class SolicitudController extends Controller
     public function newAction(Request $request)
     {
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-09-15');
+        $deadline = new \DateTime('2017-05-06');
         if($now >= $deadline)
             return $this->render(':solicitud:closed.html.twig');
 
@@ -64,8 +64,8 @@ class SolicitudController extends Controller
             $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Simetrías 2017')
-                ->setFrom('webmaster@matmor.unam.mx')
+                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
+                ->setFrom('simetrias2017@matmor.unam.mx')
                 ->setTo(array($solicitud->getMail()))
 //                ->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail.txt.twig', array('entity' => $solicitud)))

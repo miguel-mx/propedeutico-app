@@ -23,6 +23,9 @@ class RecomendacionController extends Controller
      */
     public function indexAction()
     {
+        // Access control
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
+
         $em = $this->getDoctrine()->getManager();
 
         $recomendacions = $em->getRepository('SimBundle:Recomendacion')->findAll();
@@ -40,7 +43,8 @@ class RecomendacionController extends Controller
      */
     public function newAction(Request $request, Solicitud $solicitud, $correo)
     {
-        if(!$solicitud->isValid($correo))
+        // Valida que sea un correo válido
+        if($solicitud->getMailprofesor1() != $correo && $solicitud->getMailprofesor2() != $correo)
             throw $this->createNotFoundException('La recomendación no existe');
 
         $rec = $solicitud->isRecomended($correo);
@@ -94,6 +98,10 @@ class RecomendacionController extends Controller
      */
     public function editAction(Request $request, Recomendacion $recomendacion)
     {
+
+        // Access control
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Acceso restringido');
+
         $deleteForm = $this->createDeleteForm($recomendacion);
         $editForm = $this->createForm('SimBundle\Form\RecomendacionType', $recomendacion);
         $editForm->handleRequest($request);
