@@ -8,7 +8,7 @@ security:
             memory:
                 users:
                     admin:
-                        password: $2a$06$EG2lEBKMNk4Q2Q2KPi4mzureBCherxOzT1gapZ6fONtGqUrx9Zuci
+                        password: $2a$06$XeB3DDwzFY3Og6NAvcIWgOPw9AkfrXhVbk5IO3TBfJE14TtdXRy.e
                         roles: 'ROLE_ADMIN'
                     cesar:
                         password: $2a$06$6C88P4aeTaIhoOtV8PXrTenYzcz17ONN.sKabcpb9dsTzJby9JGsu

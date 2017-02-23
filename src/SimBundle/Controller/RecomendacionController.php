@@ -75,7 +75,7 @@ class RecomendacionController extends Controller
                 ->setFrom('simetrias2017@matmor.unam.mx')
                 ->setTo($correo)
                 ->setCc($solicitud->getMail())
-//              ->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('recomendacion/mail-profesor.txt.twig', array('entity' => $recomendacion)))
             ;
 
