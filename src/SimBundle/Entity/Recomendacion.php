@@ -66,7 +66,7 @@ class Recomendacion
     /**
      * Many Recomendaciones have One Solicitud.
      * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="recomendaciones")
-     * @ORM\JoinColumn(name="recomendacion_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="solicitud_id", referencedColumnName="id")
      */
     private $solicitud;
 
