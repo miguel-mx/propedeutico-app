@@ -106,7 +106,6 @@ class Solicitud
      * @ORM\Column(name="promedio", type="string", length=20)
      */
     private $promedio;
-
     /**
      * @var string
      *
