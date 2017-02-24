@@ -23,21 +23,6 @@
                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#evalModal">
                             <i class="fa fa-pencil"></i> Evaluar </button>
                     </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="evalModal" tabindex="-1" role="dialog" aria-labelledby="evalModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="evalModalLabel">Evaluar solicitud</h4>
-                                </div>
-                                <div class="modal-body">
-                                    {% render(controller('SimBundle:Solicitud:edit', {'slug' : solicitud.slug })) %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -115,15 +100,17 @@
                         {% endif %}
                     </h3>
                 </div>
-                <div class="row">
-                    {% for recomendacion in solicitud.recomendaciones %}
+
+                {% for recomendacion in solicitud.recomendaciones %}
+                    <div class="row">
                         {% if recomendacion.mail == solicitud.mailprofesor1 %}
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
+                            <div class="col-md-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em></div>
                                     <div class="panel-body">
                                         <table class="table">
                                             <tr>
-                                                <td><strong>Profesor:</strong></td><td>{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em><br>{{ solicitud.univprofesor1 }}</td>
+                                                <td><strong>Universidad:</strong></td><td>{{ solicitud.univprofesor1 }}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Comparacion:</strong></td><td>{{ recomendacion.comparacion }}</td>
@@ -142,12 +129,13 @@
                                 </div>
                             </div>
                         {% elseif recomendacion.mail == solicitud.mailprofesor2 %}
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
+                            <div class="col-md-12">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em></div>
                                     <div class="panel-body">
                                         <table class="table">
                                             <tr>
-                                                <td><strong>Profesor:</strong></td><td>{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em><br>{{ solicitud.univprofesor2 }}</td>
+                                                <td><strong>Universidad:</strong></td><td>{{ solicitud.univprofesor2 }}</td>
                                             </tr>
                                             <tr>
                                                 <td><strong>Comparacion:</strong></td><td>{{ recomendacion.comparacion }}</td>
@@ -166,8 +154,9 @@
                                 </div>
                             </div>
                         {% endif %}
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
+
                 <p class="text-muted text-right"><small>Última actualización: {{ solicitud.updatedAt|localizeddate('medium', 'none', null, null, "cccc, d MMMM Y 'a las' hh:mm aaa") }}</small></p>
             </div>
         </div>
@@ -179,6 +168,21 @@
             </div>
         </div>
         <div class="page-header"><h1>&nbsp;</h1></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="evalModal" tabindex="-1" role="dialog" aria-labelledby="evalModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="evalModalLabel">Evaluar solicitud</h4>
+                </div>
+                <div class="modal-body">
+                    {% render(controller('SimBundle:Solicitud:edit', {'slug' : solicitud.slug })) %}
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
