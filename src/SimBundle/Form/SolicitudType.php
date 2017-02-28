@@ -32,7 +32,6 @@ class SolicitudType extends AbstractType
                 'choices'  => array(
                     'Licenciatura' => 'Licenciatura',
                     'Maestría' => 'Maestría',
-                    'Doctorado' => 'Doctorado',
                 ),
                 'choices_as_values' => true,
             ))
