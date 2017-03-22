@@ -1,4 +1,4 @@
-simetrias2017
-=============
+Propedeutico 2017
+=================
 
-Evento de Simetrías
+Curso Propedeutico 2017
