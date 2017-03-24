@@ -34,9 +34,6 @@
                                 <td><strong>Universidad:</strong></td><td>{{ solicitud.universidad}}</td>
                             </tr>
                             <tr>
-                                <td><strong>Programa:</strong></td><td>{{ solicitud.programa }}</td>
-                            </tr>
-                            <tr>
                                 <td><strong>Porcentaje de avance:</strong></td><td>{{ solicitud.avance }}</td>
                             </tr>
                             <tr>
@@ -65,7 +62,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="well">
-                                <p class="text-muted">{{ solicitud.comentarios }}</p>
+                                <p class="text-muted">{{ solicitud.comentarios|raw }}</p>
                             </div>
                         </div>
                     </div>
@@ -76,16 +73,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <h4>Razones para asistir:</h4>
                         <div class="well">
-                            {{ solicitud.razones }}
+                            {{ solicitud.razones|raw }}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <p><h4>Solicita beca: <strong>{{ solicitud.beca }}</strong></h4></p>
+                    </div>
+                    <div class="col-md-3">
+                        {% if solicitud.vegetariano %}
+                            <p><h4 class="text-success"><i class="fa fa-check-circle icon-success"></i> Vegetariano</h4></p>
+                        {% else %}
+                            <p><h4 class="text-info">No vegetariano</h4></p>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -106,50 +110,26 @@
                         {% if recomendacion.mail == solicitud.mailprofesor1 %}
                             <div class="col-md-12">
                                 <div class="panel panel-info">
-                                    <div class="panel-heading">{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em></div>
+                                    <div class="panel-heading">{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em> | {{ solicitud.univprofesor1 }}</div>
                                     <div class="panel-body">
-                                        <table class="table">
-                                            <tr>
-                                                <td><strong>Universidad:</strong></td><td>{{ solicitud.univprofesor1 }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Comparación:</strong></td><td>{{ recomendacion.comparacion }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Materias:</strong></td><td>{{ recomendacion.materias }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Participación en clase:</strong></td><td>{{ recomendacion.participacion }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Motivación:</strong></td><td>{{ recomendacion.motivacion }}</td>
-                                            </tr>
-                                        </table>
+                                        <div class="well">
+                                            {{ recomendacion.recomendacion|raw }}
+                                        </div>
+                                        <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
                                     </div>
                                 </div>
                             </div>
                         {% elseif recomendacion.mail == solicitud.mailprofesor2 %}
                             <div class="col-md-12">
                                 <div class="panel panel-info">
-                                    <div class="panel-heading">{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em></div>
+                                    <div class="panel-heading">{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em> | {{ solicitud.univprofesor2 }}</div>
                                     <div class="panel-body">
-                                        <table class="table">
-                                            <tr>
-                                                <td><strong>Universidad:</strong></td><td>{{ solicitud.univprofesor2 }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Comparación:</strong></td><td>{{ recomendacion.comparacion }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Materias:</strong></td><td>{{ recomendacion.materias }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Participación en clase:</strong></td><td>{{ recomendacion.motivacion }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Motivación:</strong></td><td>{{ recomendacion.motivacion }}</td>
-                                            </tr>
-                                        </table>
+                                        <div class="well">
+                                            {{ recomendacion.recomendacion|raw }}
+                                        </div>
+                                        {%  if recomendacion.recomendacionFile %}
+                                        <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

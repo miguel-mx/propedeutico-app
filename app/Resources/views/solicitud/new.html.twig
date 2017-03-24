@@ -5,31 +5,15 @@
 
 {% block body %}
 
+    <div class="container-fluid">
+        <img src="{{ asset('images/propedeutico.png') }}">
+    </div>
+
     <div class="container">
-         <img src="{{ asset('images/1140x250.png') }}">
+
 
         <div class="page-header">
             <h2>Formulario de solicitud de beca<br></h2>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="lead">El proceso de registro consta de tres partes:</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="text-muted"><strong>1) Información personal:</strong> Llena los campos del siguiente formulario:</p>
-                <p class="text-muted"><strong>2) Recomendaciones:</strong> Proporciona dirección de correo de dos profesores. Se les enviará un correo electrónico para solicitar una recomendación.</p>
-            </div>
-            <div class="col-md-6">
-                <p class="text-muted"><strong>3) Ejercicios:</strong> en la primera mitad de mayo le haremos llegar a todos los solicitantes un texto breve relacionado con los temas de la escuela. En el texto habrá algunos ejercicios que se deberán entregar en un lapso de dos semanas para completar la solicitud.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="alert alert-success">Es importante completar los pasos (1) y (2) a más tardar el <strong>5 de mayo de 2017</strong>. Si falta alguno de los pasos la solicitud no será tomada en cuenta.</p>
-                <p class="alert alert-success">Los resultados se darán a conocer a principios de junio de 2017.</p>
-            </div>
         </div>
 
         {{ form_start(form) }}
@@ -93,14 +77,14 @@
                     <strong>Todos los campos son obligatorios para los estudiantes.</strong>
                 </div> #}
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Carrera de licenciatura:</label>
                             {{ form_widget(form.carrera, {'attr': {'class': 'form-control'}}) }}
                             <span class="text-danger">{{ form_errors(form.carrera) }}</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Universidad</label>
                             {{ form_widget(form.universidad, {'attr': {'class': 'form-control'}}) }}
@@ -108,22 +92,17 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Programa actual</label>
-                            {{ form_widget(form.programa, {'attr': {'class': 'form-control'}}) }}
-                            <span class="text-danger">{{ form_errors(form.programa) }}</span>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Porcentaje de avance %</label>
                             {{ form_widget(form.avance, {'attr': {'class': 'form-control'}}) }}
                             <span class="text-danger">{{ form_errors(form.avance) }}</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Promedio general</label>
                             {{ form_widget(form.promedio, {'attr': {'class': 'form-control'}}) }}
@@ -140,23 +119,27 @@
                         </div>
                     </div>
                 </div>
-                    <div class="alert alert-warning">
-                        <p>Contamos con un número limitado de BECAS DE ALIMENTOS (para aquellos que
-                            residen en Cuernavaca) y BECAS DE ALIMENTOS Y HOSPEDAJE, que deben ser
-                            solicitadas en el proceso de registro.</p>
-                    </div>
                 <div class="row">
-                <div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label>Tipo de beca</label>
                             {{ form_widget(form.beca, {'attr': {'class': 'form-control'}}) }}
                             <span class="text-danger">{{ form_errors(form.beca) }}</span>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                          <label>
+                            {{ form_widget(form.vegetariano) }}
+                            Comida vegetariana
+
+                          </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="alert alert-warning">
                     <p>Es necesario proporcionar dos referencias de profesores. Se les enviará un correo electrónico para solicitar una recomendación.<br>
-                    La fecha límite para enviar la recomendación es el jueves 11 de mayo.</p>
+                        La fecha límite para enviar la recomendación es 12 de mayo.</p>
                 </div>
                 <div class="row">
                     <div class="col-md-4">

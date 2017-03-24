@@ -5,65 +5,31 @@
 
 {% block body %}
     <div class="container">
-        <div class="page-header"><h2>2da Escuela de Verano en Simetrías de Estructuras Combinatorias<br><small>Formato de recomendación</small></h2></div>
-
-        <p>
-            El(la) estudiante <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> solicitó su participación en la
-            2a Escuela de Verano en Simetrías de Estructuras Combinatorias y lo(la) mencionó a usted como una posible referencia.
-            Agradeceremos que nos conceda un poco de su tiempo para responder las siguientes preguntas:
-        </p>
-        <h2></h2>
+    <h3>Taller Propedéutico de ingreso al
+    Posgrado Conjunto en Ciencias Matemáticas <small>UNAM - UMSNH 2017</small><br></h3><br>
 
         {{ form_start(form) }}
         <div class="alert-danger">{{ form_errors(form) }}</div>
         <div class="panel panel-info">
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <p class="text-muted">¿Cómo compararía a <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> con otros de su carrera?<br>
-                            [ésta información es importante, sobre todo si varios alumnos suyos lo indicaron como referencia]</p>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        {{ form_widget(form.comparacion, {'attr': {'class': 'form-control'}}) }}
-                        <span class="text-danger">{{ form_errors(form.comparacion) }}</span>
-                    </div>
+                <div class="alert alert-info">
+                    La recomendación se puede subir como un archivo PDF o se puede escribir directamente en el siguiente formulario.
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <p class="text-muted">¿Qué materias cursó <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> con usted?</p>
-                            {{ form_widget(form.materias, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
-                            <span class="text-danger">{{ form_errors(form.materias) }}</span>
+                            <p class="text-muted">Recomendación para <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong></p>
+                            {{ form_widget(form.recomendacion, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
+                            <span class="text-danger">{{ form_errors(form.recomendacion) }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <p class="text-muted">Recuerda las participaciones de <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> en clase? ¿Puede comentarnos algo acerca de ellas?</p>
-                            {{ form_widget(form.participacion, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
-                            <span class="text-danger">{{ form_errors(form.participacion) }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <p class="text-muted">¿Qué tan útil sera para <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> asistir a este evento?</p>
-                            {{ form_widget(form.utilidad, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
-                            <span class="text-danger">{{ form_errors(form.utilidad) }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <p class="text-muted">Que tan motivado esta <strong>{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</strong> para participar?</p>
-                            {{ form_widget(form.motivacion, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
-                            <span class="text-danger">{{ form_errors(form.motivacion) }}</span>
+                            <p class="text-muted">Subir archivo con recomendación</p>
+                            {{ form_widget(form.recomendacionFile) }}
+                            <span class="text-danger">{{ form_errors(form.recomendacionFile) }}</span>
                         </div>
                     </div>
                 </div>

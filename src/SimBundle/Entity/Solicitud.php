@@ -89,13 +89,6 @@ class Solicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="programa", type="string", length=40)
-     */
-    private $programa;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="avance", type="string", length=20)
      */
     private $avance;
@@ -180,6 +173,13 @@ class Solicitud
      * @ORM\Column(name="beca", type="string", length=40)
      */
     private $beca;
+
+   /**
+    * @var bool
+    *
+    * @ORM\Column(name="vegetariano", type="boolean", nullable=true)
+    */
+    private $vegetariano;
 
     /**
      * @var bool
@@ -442,30 +442,6 @@ class Solicitud
     public function getUniversidad()
     {
         return $this->universidad;
-    }
-
-    /**
-     * Set programa
-     *
-     * @param string $programa
-     *
-     * @return Solicitud
-     */
-    public function setPrograma($programa)
-    {
-        $this->programa = $programa;
-
-        return $this;
-    }
-
-    /**
-     * Get programa
-     *
-     * @return string
-     */
-    public function getPrograma()
-    {
-        return $this->programa;
     }
 
     /**
@@ -898,4 +874,21 @@ class Solicitud
 
         return NULL;
     }
+
+    /**
+     * @return boolean
+     */
+    public function isVegetariano()
+    {
+        return $this->vegetariano;
+    }
+
+    /**
+     * @param boolean $vegetariano
+     */
+    public function setVegetariano($vegetariano)
+    {
+        $this->vegetariano = $vegetariano;
+    }
+
 }

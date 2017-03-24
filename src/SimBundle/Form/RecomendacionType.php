@@ -14,19 +14,13 @@ class RecomendacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('comparacion', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
-                'choices'  => array(
-                    'Excepcional' => 'Excepcional',
-                    'Arriba del promedio' => 'Arriba del promedio',
-                    'Promedio' => 'Promedio',
-                    'Debajo del promedio' => 'Debajo del promedio',
-                ),
-                'choices_as_values' => true,
+            ->add('recomendacion', 'ckeditor', array(
+                'config_name' => 'propedeutico_config',
+                'required' => false,
             ))
-            ->add('materias', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('participacion', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('utilidad', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
-            ->add('motivacion', 'Symfony\Component\Form\Extension\Core\Type\TextareaType')
+            ->add('recomendacionFile','file', array(
+                'required' => false,
+            ))
         ;
     }
     

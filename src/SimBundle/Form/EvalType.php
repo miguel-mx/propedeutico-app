@@ -15,8 +15,10 @@ class EvalType extends AbstractType
     {
         $builder
             ->add('aceptado')
-            ->add('comentarios', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array('required' => false))
-
+            ->add('comentarios', 'ckeditor', array(
+                'config_name' => 'propedeutico_config',
+                'required' => false,
+            ))
         ;
     }
     

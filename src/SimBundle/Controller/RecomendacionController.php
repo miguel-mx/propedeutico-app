@@ -75,11 +75,11 @@ class RecomendacionController extends Controller
             $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
-                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setSubject('Taller Propedéutico de ingreso al PCCM 2017')
+                ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo($correo)
                 ->setCc($solicitud->getMail())
-                ->setBcc(array('rudos@matmor.unam.mx'))
+                // ->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('recomendacion/mail-profesor.txt.twig', array('entity' => $recomendacion)))
             ;
 

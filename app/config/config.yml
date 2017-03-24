@@ -35,6 +35,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -83,3 +86,17 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+
+ivory_ck_editor:
+    configs:
+        propedeutico_config:
+            toolbar: standard
+            language: es
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        carta_recomendacion:
+            uri_prefix:         ../../recomendaciones
+            upload_destination: '%kernel.root_dir%/../web/recomendaciones/'
+            namer:              vich_uploader.namer_uniqid

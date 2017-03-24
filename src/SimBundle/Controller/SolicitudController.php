@@ -43,7 +43,7 @@ class SolicitudController extends Controller
     public function newAction(Request $request)
     {
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-05-06');
+        $deadline = new \DateTime('2017-05-05');
         if($now >= $deadline)
             return $this->render(':solicitud:closed.html.twig');
 
@@ -64,10 +64,10 @@ class SolicitudController extends Controller
             $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
-                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMail()))
-                ->setBcc(array('rudos@matmor.unam.mx'))
+                //->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail.txt.twig', array('entity' => $solicitud)))
             ;
 
@@ -75,10 +75,10 @@ class SolicitudController extends Controller
 
             // Envía correo de solicitud de recomendación 1
             $message = \Swift_Message::newInstance()
-                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
-                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor1()))
-                ->setBcc(array('rudos@matmor.unam.mx'))
+                //->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor1())))
             ;
 
@@ -86,10 +86,10 @@ class SolicitudController extends Controller
 
             // Envía correo de solicitud de recomendación 2
             $message = \Swift_Message::newInstance()
-                ->setSubject('2da Escuela de Verano en Simetrías de Estructuras Combinatorias')
-                ->setFrom('simetrias2017@matmor.unam.mx')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor2()))
-                ->setBcc(array('rudos@matmor.unam.mx'))
+                //->setBcc(array('rudos@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor2())))
             ;
 

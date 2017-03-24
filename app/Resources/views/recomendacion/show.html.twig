@@ -4,30 +4,27 @@
     <div class="container">
         <h1></h1>
 
-
-    {% for flash_message in app.session.flashBag.get('notice') %}
-        <div class="alert alert-success">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header text-muted"><h3><i class="fa fa-user"></i> {{ recomendacion.solicitud.paterno }} {{ recomendacion.solicitud.materno }} {{ recomendacion.solicitud.nombre }} -
-                            <small><strong>Recomendación</strong></small></h3></div>
-                </div>
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
             </div>
-            <p class="text-muted">Comparación con otros estudiantes: <strong>{{ recomendacion.comparacion }}</strong></p>
-            <p class="text-muted">Materias cursadas:</p>
-            <div class="text-muted well">{{ recomendacion.materias }}</div>
-            <p class="text-muted">Participación en clase</p>
-            <div class="text-muted well">{{ recomendacion.participacion }}</div>
-            <p class="text-muted">Utilidad para el estudiante:</p>
-            <div class="text-muted well">{{ recomendacion.utilidad }}</div>
-            <p class="text-muted text-right"><small>Última actualización: {{ recomendacion.updatedAt|localizeddate('medium', 'none', null, null, "cccc, d MMMM Y 'a las' hh:mm aaa") }}</small></p>
+        {% endfor %}
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header text-muted"><h3><i class="fa fa-user"></i> {{ recomendacion.solicitud.paterno }} {{ recomendacion.solicitud.materno }} {{ recomendacion.solicitud.nombre }} -
+                                <small><strong>Recomendación</strong></small></h3></div>
+                    </div>
+                </div>
+                <p class="text-muted">Recomendación:</p>
+                <div class="text-muted well">{{ recomendacion.recomendacion|raw }}</div>
+                {% if recomendacion.recomendacionName %}
+                    <h3><a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">{{ recomendacion.recomendacionName }}</a></h3>
+                {% endif %}
+                <p class="text-muted text-right"><small>Última actualización: {{ recomendacion.updatedAt|localizeddate('medium', 'none', null, null, "cccc, d MMMM Y 'a las' hh:mm aaa") }}</small></p>
+            </div>
         </div>
-    </div>
     </div>
 {% endblock %}

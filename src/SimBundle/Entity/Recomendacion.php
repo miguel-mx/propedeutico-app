@@ -4,6 +4,7 @@ namespace SimBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Recomendacion
@@ -11,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="recomendacion")
  * @ORM\Entity(repositoryClass="SimBundle\Repository\RecomendacionRepository")
  * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
+ *
  */
 class Recomendacion
 {
@@ -26,42 +29,9 @@ class Recomendacion
     /**
      * @var string
      *
-     * @ORM\Column(name="comparacion", type="string", length=60)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="recomendacion", type="text", nullable=true)
      */
-    private $comparacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="materias", type="string", length=500)
-     * @Assert\NotBlank()
-     */
-    private $materias;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="participacion", type="string", length=500)
-     * @Assert\NotBlank()
-     */
-    private $participacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="utilidad", type="string", length=1000)
-     * @Assert\NotBlank()
-     */
-    private $utilidad;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="motivacion", type="string", length=1000)
-     * @Assert\NotBlank()
-     */
-    private $motivacion;
+    private $recomendacion;
 
     /**
      * Many Recomendaciones have One Solicitud.
@@ -69,6 +39,27 @@ class Recomendacion
      * @ORM\JoinColumn(name="solicitud_id", referencedColumnName="id")
      */
     private $solicitud;
+
+    /**
+     *
+     * @Vich\UploadableField(mapping="carta_recomendacion", fileNameProperty="recomendacionName")
+     *
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Favor de subir el archivo en formato PDF"
+     * )
+     *
+     * @var File
+     */
+    private $recomendacionFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $recomendacionName;
 
     /**
      * @var \DateTime
@@ -108,102 +99,6 @@ class Recomendacion
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set comparacion
-     *
-     * @param string $comparacion
-     *
-     * @return Recomendacion
-     */
-    public function setComparacion($comparacion)
-    {
-        $this->comparacion = $comparacion;
-
-        return $this;
-    }
-
-    /**
-     * Get comparacion
-     *
-     * @return string
-     */
-    public function getComparacion()
-    {
-        return $this->comparacion;
-    }
-
-    /**
-     * Set materias
-     *
-     * @param string $materias
-     *
-     * @return Recomendacion
-     */
-    public function setMaterias($materias)
-    {
-        $this->materias = $materias;
-
-        return $this;
-    }
-
-    /**
-     * Get materias
-     *
-     * @return string
-     */
-    public function getMaterias()
-    {
-        return $this->materias;
-    }
-
-    /**
-     * Set participacion
-     *
-     * @param string $participacion
-     *
-     * @return Recomendacion
-     */
-    public function setParticipacion($participacion)
-    {
-        $this->participacion = $participacion;
-
-        return $this;
-    }
-
-    /**
-     * Get participacion
-     *
-     * @return string
-     */
-    public function getParticipacion()
-    {
-        return $this->participacion;
-    }
-
-    /**
-     * Set utilidad
-     *
-     * @param string $utilidad
-     *
-     * @return Recomendacion
-     */
-    public function setUtilidad($utilidad)
-    {
-        $this->utilidad = $utilidad;
-
-        return $this;
-    }
-
-    /**
-     * Get utilidad
-     *
-     * @return string
-     */
-    public function getUtilidad()
-    {
-        return $this->utilidad;
     }
 
     /**
@@ -323,6 +218,61 @@ class Recomendacion
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRecomendacion()
+    {
+        return $this->recomendacion;
+    }
+
+    /**
+     * @param string $recomendacion
+     */
+    public function setRecomendacion($recomendacion)
+    {
+        $this->recomendacion = $recomendacion;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getRecomendacionFile()
+    {
+        return $this->recomendacionFile;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $recomendacionFile
+     *
+     * @return Recomendacion
+     */
+    public function setRecomendacionFile($recomendacionFile)
+    {
+        $this->recomendacionFile = $recomendacionFile;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRecomendacionName()
+    {
+        return $this->recomendacionName;
+    }
+
+    /**
+     * @param mixed $recomendacionName
+     *
+     * @return Recomendacion
+     */
+    public function setRecomendacionName($recomendacionName)
+    {
+        $this->recomendacionName = $recomendacionName;
+
+        return $this;
     }
 
 }

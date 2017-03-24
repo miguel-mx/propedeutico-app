@@ -28,16 +28,12 @@ class SolicitudType extends AbstractType
             ->add('procedencia')
             ->add('carrera')
             ->add('universidad')
-            ->add('programa', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
-                'choices'  => array(
-                    'Licenciatura' => 'Licenciatura',
-                    'Maestría' => 'Maestría',
-                ),
-                'choices_as_values' => true,
-            ))
             ->add('avance')
             ->add('promedio')
-            ->add('razones', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array('required' => false))
+            ->add('razones', 'ckeditor', array(
+                'config_name' => 'propedeutico_config',
+                'required' => false,
+            ))
             ->add('beca', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
                 'choices'  => array(
                     'Beca de alimentos y hospedaje' => 'Beca de alimentos y hospedaje',
@@ -46,6 +42,7 @@ class SolicitudType extends AbstractType
                 ),
                 'choices_as_values' => true,
             ))
+            ->add('vegetariano')
             ->add('profesor1')
             ->add('univprofesor1')
             ->add('mailprofesor1')
