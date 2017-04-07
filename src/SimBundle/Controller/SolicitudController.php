@@ -67,7 +67,7 @@ class SolicitudController extends Controller
                 ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMail()))
-                //->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBcc(array('miguel@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail.txt.twig', array('entity' => $solicitud)))
             ;
 
@@ -78,7 +78,7 @@ class SolicitudController extends Controller
                 ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor1()))
-                //->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBcc(array('miguel@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor1())))
             ;
 
@@ -89,7 +89,7 @@ class SolicitudController extends Controller
                 ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor2()))
-                //->setBcc(array('rudos@matmor.unam.mx'))
+                ->setBcc(array('miguel@matmor.unam.mx'))
                 ->setBody($this->renderView('solicitud/mail-profesor.txt.twig', array('entity' => $solicitud, 'email' => $solicitud->getMailprofesor2())))
             ;
 

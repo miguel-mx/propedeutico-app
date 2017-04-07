@@ -158,9 +158,9 @@ class Solicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="razones", type="string", length=1000, nullable=true)
+     * @ORM\Column(name="razones", type="text", nullable=true)
      * @Assert\Length(
-     *      max = 1000,
+     *      max = 10000,
      *      maxMessage = "No se permiten más de {{ limit }} caracteres"
      * )
      */

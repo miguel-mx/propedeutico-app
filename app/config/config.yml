@@ -92,6 +92,7 @@ ivory_ck_editor:
         propedeutico_config:
             toolbar: standard
             language: es
+#            skin: "moono-lisa, %kernel.root_dir%/../web/ckeditor/skins/moono-lisa/"
 
 vich_uploader:
     db_driver: orm
