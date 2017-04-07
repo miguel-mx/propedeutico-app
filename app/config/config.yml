@@ -97,6 +97,6 @@ vich_uploader:
     db_driver: orm
     mappings:
         carta_recomendacion:
-            uri_prefix:         ../../recomendaciones
+            uri_prefix:         ../recomendaciones
             upload_destination: '%kernel.root_dir%/../web/recomendaciones/'
             namer:              vich_uploader.namer_uniqid
