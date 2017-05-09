@@ -112,10 +112,14 @@
                                 <div class="panel panel-info">
                                     <div class="panel-heading">{{ solicitud.profesor1 }} <em>{{ solicitud.mailprofesor1 }}</em> | {{ solicitud.univprofesor1 }}</div>
                                     <div class="panel-body">
-                                        <div class="well">
-                                            {{ recomendacion.recomendacion|raw }}
-                                        </div>
-                                        <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
+                                        {% if recomendacion.recomendacion %}
+                                            <div class="well">
+                                                {{ recomendacion.recomendacion|raw }}
+                                            </div>
+                                        {% endif %}
+                                        {%  if recomendacion.recomendacionFile %}
+                                            <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -124,11 +128,13 @@
                                 <div class="panel panel-info">
                                     <div class="panel-heading">{{ solicitud.profesor2 }} <em>{{ solicitud.mailprofesor2 }}</em> | {{ solicitud.univprofesor2 }}</div>
                                     <div class="panel-body">
-                                        <div class="well">
-                                            {{ recomendacion.recomendacion|raw }}
-                                        </div>
+                                        {% if recomendacion.recomendacion %}
+                                            <div class="well">
+                                                {{ recomendacion.recomendacion|raw }}
+                                            </div>
+                                        {% endif %}
                                         {%  if recomendacion.recomendacionFile %}
-                                        <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
+                                            <a href="{{ vich_uploader_asset(recomendacion, 'recomendacionFile') }}">Recomendación</a>
                                         {% endif %}
                                     </div>
                                 </div>
