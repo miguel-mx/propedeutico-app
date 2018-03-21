@@ -66,7 +66,7 @@ class SolicitudController extends Controller
             $transport->setStreamOptions(array('ssl' => array('allow_self_signed' => true, 'verify_peer' => false)));
 
             $message = \Swift_Message::newInstance()
-                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2018')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMail()))
                 ->setBcc(array('miguel@matmor.unam.mx'))
@@ -77,7 +77,7 @@ class SolicitudController extends Controller
 
             // Envía correo de solicitud de recomendación 1
             $message = \Swift_Message::newInstance()
-                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2018')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor1()))
                 ->setBcc(array('miguel@matmor.unam.mx'))
@@ -88,7 +88,7 @@ class SolicitudController extends Controller
 
             // Envía correo de solicitud de recomendación 2
             $message = \Swift_Message::newInstance()
-                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2017')
+                ->setSubject('Taller Propedéutico de Ingreso al PCCM 2018')
                 ->setFrom('webmaster@matmor.unam.mx')
                 ->setTo(array($solicitud->getMailprofesor2()))
                 ->setBcc(array('miguel@matmor.unam.mx'))
