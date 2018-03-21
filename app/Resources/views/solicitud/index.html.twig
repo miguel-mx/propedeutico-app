@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container-fluid">
 
 {#    Taller Propedéutico de ingreso al
     Posgrado Conjunto en Ciencias Matemáticas
@@ -28,6 +28,7 @@
                 <th>Nombre</th>
                 <th>Universidad</th>
                 <th>Recomendaciones</th>
+                <th>Beca</th>
                 <th>Aceptado</th>
                 <th>Confirmado</th>
             </tr>
@@ -36,9 +37,10 @@
         {% for solicitud in solicituds %}
             <tr>
                 {#<td><a href="{{ path('solicitud_show', { 'slug': solicitud.slug }) }}">{{ solicitud.id }}</a></td>#}
-                <td><a href="{{ path('solicitud_show', { 'slug': solicitud.slug }) }}">{{ solicitud.paterno }} {{ solicitud.materno }} {{ solicitud.nombre }}</a></td>
+                <td><a href="{{ path('solicitud_show', { 'slug': solicitud.slug }) }}">{{ solicitud.paterno|title }} {{ solicitud.materno|title }} {{ solicitud.nombre|title }}</a></td>
                 <td>{{ solicitud.universidad }}</td>
                 <td class="text-center">{{ solicitud.recomendaciones | length }}</td>
+                <td class="text-center">{{ solicitud.beca }}</td>
                 <td class="text-center">{{ solicitud.aceptado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
                 <td class="text-center">{{ solicitud.confirmado ? '<i class="fa fa-check-square-o icon-success"></i> Si' : '<i class="fa fa-times-circle icon-danger"></i> No' }}</td>
             </tr>

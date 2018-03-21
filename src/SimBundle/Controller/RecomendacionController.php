@@ -44,7 +44,7 @@ class RecomendacionController extends Controller
     {
         //TODO: Especificar fecha límite
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-05-12');
+        $deadline = new \DateTime('2017-05-13');
         if($now >= $deadline)
             return $this->render(':solicitud:closed.html.twig');
 

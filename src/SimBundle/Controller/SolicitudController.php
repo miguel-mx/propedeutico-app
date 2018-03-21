@@ -43,7 +43,7 @@ class SolicitudController extends Controller
     public function newAction(Request $request)
     {
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-05-13');
+        $deadline = new \DateTime('2018-06-13');
         if($now >= $deadline)
             return $this->render(':solicitud:closed.html.twig');
 
