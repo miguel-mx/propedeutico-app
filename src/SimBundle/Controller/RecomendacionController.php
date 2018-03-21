@@ -44,9 +44,12 @@ class RecomendacionController extends Controller
     {
         //TODO: Especificar fecha límite
         $now = new \DateTime();
-        $deadline = new \DateTime('2017-05-13');
+        $deadline = new \DateTime('2017-05-04');
+
         if($now >= $deadline)
-            return $this->render(':solicitud:closed.html.twig');
+            return $this->render(':solicitud:closed.html.twig', array(
+            'fecha' => '04 de mayo del 2018',
+        ));
 
         if($solicitud->getMailprofesor1() != $correo && $solicitud->getMailprofesor2() != $correo)
             throw $this->createNotFoundException('La recomendación no existe');

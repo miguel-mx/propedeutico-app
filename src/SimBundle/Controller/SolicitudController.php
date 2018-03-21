@@ -43,9 +43,11 @@ class SolicitudController extends Controller
     public function newAction(Request $request)
     {
         $now = new \DateTime();
-        $deadline = new \DateTime('2018-06-13');
+        $deadline = new \DateTime('2018-05-04');
         if($now >= $deadline)
-            return $this->render(':solicitud:closed.html.twig');
+            return $this->render(':solicitud:closed.html.twig', array(
+            'fecha' => '04 de mayo del 2018',
+        ));
 
         $solicitud = new Solicitud();
         $form = $this->createForm('SimBundle\Form\SolicitudType', $solicitud);
