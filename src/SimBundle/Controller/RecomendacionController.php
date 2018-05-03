@@ -44,11 +44,11 @@ class RecomendacionController extends Controller
     {
         //TODO: Especificar fecha límite
         $now = new \DateTime();
-        $deadline = new \DateTime('2018-06-04');
+        $deadline = new \DateTime('2018-08-04');
 
         if($now >= $deadline)
             return $this->render(':solicitud:closed.html.twig', array(
-            'fecha' => '04 de mayo del 2018',
+            'fecha' => '08 de mayo del 2018',
         ));
 
         if($solicitud->getMailprofesor1() != $correo && $solicitud->getMailprofesor2() != $correo)
